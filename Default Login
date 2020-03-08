@@ -1,0 +1,20 @@
+Search documentation for default passwords and test them:
+http://www.defaultpassword.com/
+
+Google:
+site:webapplication.com password
+
+Common Username/Password combos:
+admin admin
+admin password
+admin <blank>
+admin <servicename>
+<servicename> <servicename>
+root root
+root admin
+root password
+root <servicename>
+<username> password
+<username> admin
+<username> username
+username <servicename>
